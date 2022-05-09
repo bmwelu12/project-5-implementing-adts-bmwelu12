@@ -1,7 +1,7 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 2: Stack-LL
 #
-# NAME:         FIXME
+# NAME:         BREDA MWELU
 # ASSIGNMENT:   Project 5: Implementing ADTs
 
 from Node import Node
@@ -13,32 +13,51 @@ class StackLL(object):
             for item in list:
                 self.add(item)
 
+    # returns the data on the top of the stack, and None otherwise
     def peek(self):
-        # FIXME
-        return
-
+        if self.is_empty():
+            return None
+        else:
+            return self.top.data
+    # returns the data on the top of the stack,
     def pop(self):
-        # FIXME
-        return
+        if self.top is None:
+            return None
+        else:
+            new_node = self.top.data
+            self.top = self.top.next_node
 
+            return new_node
+    # adds a new Node with data on the top of the stack
     def push(self, data=None):
-        # FIXME
-        return
+        if self.top == None:
+            self.top = Node(data)
+        else:
+            newnode = Node(data)
+            newnode.next_node = self.top
+            self.top = newnode
+        return self.top
 
+# Display the contents of the stack
     def print(self):
         n = self.top
         while n is not None:
             print(n.get_data(), "=>", end=" ")
             n = n.get_next()
         print("NULL")
-
+# returns True if the stack is empty
     def is_empty(self):
-        # FIXME
-        return
-
+        if self.top == None:
+            return True
+        else:
+            return False
+# Makes the stack empty
     def clear(self):
-        # FIXME
-        return
+        newnode = self.top
+        while newnode is not None:
+            newnode.next_node = self.top
+            self.top = None
+            return self.top
 
 def main():
     s = StackLL()

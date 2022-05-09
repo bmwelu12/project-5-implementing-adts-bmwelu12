@@ -1,7 +1,7 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 4: Stack-Array
 #
-# NAME:         FIXME
+# NAME:         BREDA MWELU
 # ASSIGNMENT:   Project 5: Implementing ADTs
 
 class StackArray(object):
@@ -9,33 +9,46 @@ class StackArray(object):
         self.array = [0 for i in range(size)]
         self.top = -1
 
+    # returns the data on the top of the stack, and None otherwise
     def peek(self):
-        # FIXME
-        return
+        if self.is_empty():
+            return None
+        return self.array[-1]
 
+# returns the data on the top of the stack
     def pop(self):
-        # FIXME
-        return
+        if not self.is_empty():
+            last = self.array[-1]
+            del self.array[-1]
+            self.top -=1
+            return last
+        else:
+            return None
 
+# puts data on the top of the stack
     def push(self, data=None):
-        # FIXME
-        return
+        self.array.append(data)
+        self.top += 1
+
 
     def print(self):
         for i in range(self.top, -1, -1):
             print(self.array[i], "=>", end=" ")
         print("NULL")
-
+# returns True if the stack is empty, or False otherwise
     def is_empty(self):
-        # FIXME
-        return
+        return self.size() == 0
 
     def is_full(self):
         return self.top == len(self.array) - 1
 
     def clear(self):
-        # FIXME
-        return
+        self.array = [None for i in range(self.size())]
+        self.top = -1
+
+
+
+
 
     def size(self):
         return self.top + 1
