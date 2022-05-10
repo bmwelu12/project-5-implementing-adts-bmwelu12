@@ -53,9 +53,6 @@ class LinkedList(object):
                 return data
             prev = new_node
             new_node = new_node.next_node
-
-
-
         return None
 
 
