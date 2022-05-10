@@ -46,10 +46,6 @@ class StackArray(object):
         self.array = [None for i in range(self.size())]
         self.top = -1
 
-
-
-
-
     def size(self):
         return self.top + 1
 
