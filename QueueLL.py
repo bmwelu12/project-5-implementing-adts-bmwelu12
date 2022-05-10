@@ -36,6 +36,7 @@ class QueueLL(object):
         if self.front is None:
             self.tail = None
         return temp.data
+
 # adds a new Node with data to the tail of the queue
     def enq(self, data=None):
         newnode = Node(data)
@@ -59,8 +60,8 @@ class QueueLL(object):
 
 # Returns true if the queue is empty
     def is_empty(self):
-
         return self.tail is None and self.front is None
+
 # Make the queue empty
     def clear(self):
         while self.front and self.tail is not None:
