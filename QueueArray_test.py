@@ -76,7 +76,5 @@ def test_enq_deq_many():
         s.enq(i)
         le.append(i)
     while not s.is_empty():
-
         la.append(s.deq())
-    print(le,la)
     assert le == la
