@@ -26,8 +26,8 @@ class StackLL(object):
         else:
             new_node = self.top.data
             self.top = self.top.next_node
-
             return new_node
+
     # adds a new Node with data on the top of the stack
     def push(self, data=None):
         if self.top == None:
@@ -51,6 +51,7 @@ class StackLL(object):
             return True
         else:
             return False
+
 # Makes the stack empty
     def clear(self):
         newnode = self.top
