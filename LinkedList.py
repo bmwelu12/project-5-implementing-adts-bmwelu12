@@ -59,6 +59,7 @@ class LinkedList(object):
 
 
     def print(self):
+
         n = self.head
         while n is not None:
             print(n.get_data(), "=>", end=" ")

@@ -11,27 +11,36 @@ class QueueArray(object):
         self.tail = -1
 
     def get_front(self):
-        return self.array[0]
+        if self.front == -1:
+            return None
+        return self.array[self.front]
 
-# Returns data at the back of the queue
+    # Returns data at the back of the queue
     def get_tail(self):
-        return self.array[-1]
+        if self.front == -1:
+            return None
+        return self.array[self.tail]
 
-# Returns the data at the front of the queue
+    # Returns the data at the front of the queue
     def deq(self):
-        if not self.is_empty():
-            deq_data = self.array[0]
-            self.array = self.array[1:]
-            return deq_data
-        return None
+        if self.front == -1:
+            return None
+        data = self.array[self.front]
+        self.front += 1
+        return data
 
 # Adds data to the front of the queue
     def enq(self, data=None):
-        for i in range(len(self.array) - 1, -1, -1):
-            if i == 0:
-                self.array[i] = data
-                return
-        self.array += [data]
+        if self.front == -1:
+            self.front = 0
+            self.tail = 0
+            self.array[0] = data
+        elif self.tail == len(self.array) - 1:
+            self.array.append(data)
+            self.tail += 1
+        else:
+            self.array[self.tail + 1] = data
+            self.tail += 1
 
     def print(self):
         for i in range(self.front, self.front + self.size(), 1):
@@ -40,15 +49,14 @@ class QueueArray(object):
 
 # Returns true if queue is empty
     def is_empty(self):
-        if self.array[0] == 0:
-            return True
-        return False
+        return self.front == -1 or self.front > self.tail
 
 # Makes the queue empty
     def clear(self):
-        self.front = 0
+        self.front = -1
+        self.tail = -1
 
-# Returns true if the queue is empty
+    # Returns true if the queue is empty
     def is_full(self):
         l = self.size()
         return l >= len(self.array)
