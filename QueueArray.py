@@ -58,8 +58,8 @@ class QueueArray(object):
 
     # Returns true if the queue is empty
     def is_full(self):
-        l = self.size()
-        return l >= len(self.array)
+        s = self.size()
+        return s >= len(self.array)
 
 # Returns the size of the queue
     def size(self):
