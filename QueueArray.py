@@ -11,47 +11,27 @@ class QueueArray(object):
         self.tail = -1
 
     def get_front(self):
-        if self.is_empty():
-            return None
-        else:
-            return self.array[self.front]
-
+        return self.array[0]
 
 # Returns data at the back of the queue
     def get_tail(self):
-        if self.is_empty():
-            return None
-        else:
-           return self.array[self.tail]
+        return self.array[-1]
 
 # Returns the data at the front of the queue
     def deq(self):
-        if self.is_empty():
-            return None
-        else:
-            x = self.array[self.front]
-            self.front =+ 1
-            return x
+        if not self.is_empty():
+            deq_data = self.array[0]
+            self.array = self.array[1:]
+            return deq_data
+        return None
 
 # Adds data to the front of the queue
     def enq(self, data=None):
-        if self.is_empty():
-            self.front = 0
-            self.tail = 0
-            self.array[0] = data
-        if self.is_full():
-            temp_array =[None for i in range(2 * self.size())]
-            size = self.size()
-            for i in range(size):
-                x = i + self.front
-                temp_array[i] =self.array[x % len(self.array)]
-            self.array = temp_array
-            self.front = 0
-            self.tail =size-1
-        else:
-            self.tail += 1
-            self.array[self.tail % len(self.array)] = data
-
+        for i in range(len(self.array) - 1, -1, -1):
+            if i == 0:
+                self.array[i] = data
+                return
+        self.array += [data]
 
     def print(self):
         for i in range(self.front, self.front + self.size(), 1):
@@ -60,13 +40,14 @@ class QueueArray(object):
 
 # Returns true if queue is empty
     def is_empty(self):
+        if self.array[0] == 0:
+            return True
+        return False
 
-        return self.size() == 0
 # Makes the queue empty
     def clear(self):
-        self.array = [None for i in range(self.size())]
-        self.front = -1
-        self.tail = -1
+        self.front = 0
+
 # Returns true if the queue is empty
     def is_full(self):
         l = self.size()
